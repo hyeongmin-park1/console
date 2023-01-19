@@ -9,10 +9,11 @@ const Node = ({ className, children, description, valid, validationErrorDesc }) 
   const { t } = useTranslation();
   return (
     <div className={className}>
+      <p className={classNames('help-block', { 'help-block-short-margin-top': !valid })}>{description}</p>
       <div>{children}</div>
       <div className="row" />
       {!valid && <p className="error-string">{i18next.exists(validationErrorDesc) ? t(validationErrorDesc) : validationErrorDesc}</p>}
-      <p className={classNames('help-block', { 'help-block-short-margin-top': !valid })}>{description}</p>
+
     </div>
   );
 };

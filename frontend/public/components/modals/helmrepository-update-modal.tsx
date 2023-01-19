@@ -1,8 +1,8 @@
 import * as _ from 'lodash-es';
 import * as React from 'react';
+import { Section } from '../hypercloud/utils/section';
 
 import { createModalLauncher, ModalTitle, ModalBody, ModalSubmitFooter, ModalComponentProps } from '../factory/modal';
-import { BlueInfoCircleIcon } from '@console/shared';
 import { useTranslation } from 'react-i18next';
 import { coFetchJSON } from '@console/internal/co-fetch';
 import { HandlePromiseProps, withHandlePromise } from '../utils';
@@ -22,17 +22,17 @@ export const HelmRepositoryUpdateModal = withHandlePromise((props: HelmRepositor
   return (
     <form onSubmit={submit} name="form" className="modal-content ">
       <ModalTitle>
-        <BlueInfoCircleIcon className="co-icon-space-r" />
-        {t('COMMON:MSG_MAIN_ACTIONBUTTON_51', { 0: t(stringKey) })}?
+        {t('COMMON:MSG_MAIN_ACTIONBUTTON_51', { 0: t(stringKey) })}
       </ModalTitle>
       <ModalBody className="modal-body">
         {message}
-        <div>
           {/* string 필요 */}
-          {`${name}을(를) 업데이트하시겠습니까?`}
-        </div>
+          {t('COMMON:MSG_MAIN_POPUP_DESCRIPTION_27')}
+          <Section label={t('COMMON:MSG_MAIN_POPUP_DESCRIPTION_28')} id="helmRepositoryName">
+          {`${name}`}
+          </Section>
       </ModalBody>
-      <ModalSubmitFooter errorMessage={props.errorMessage} inProgress={props.inProgress} submitText={t('SINGLE:MSG_PIPELINES_CREATEFORM_41')} cancel={props.cancel} />
+      <ModalSubmitFooter errorMessage={props.errorMessage} inProgress={props.inProgress} submitText={t('COMMON:MSG_MAIN_POPUP_COMMIT_3')} cancel={props.cancel} />
     </form>
   );
 });
