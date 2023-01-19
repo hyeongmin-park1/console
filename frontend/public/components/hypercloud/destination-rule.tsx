@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { K8sResourceKind } from '../../module/k8s';
 import { DetailsPage, ListPage } from '../factory';
 import { Kebab, KebabAction, detailsPage, Timestamp, navFactory, ResourceKebab, ResourceLink, ResourceSummary, SectionHeading } from '../utils';
-import { Status } from '@console/shared';
 import { DestinationRuleModel } from '../../models';
 import { ResourceLabel } from '../../models/hypercloud/resource-plural';
 import { TableProps } from './utils/default-list-component';
@@ -44,7 +43,7 @@ const tableProps: TableProps = {
       children: <ResourceLink kind={kind} name={obj.metadata.name} namespace={obj.metadata.namespace} title={obj.metadata.uid} />,
     },
     {
-      children: <Status status={obj.metadata.namespace} />,
+      children: <ResourceLink kind="Namespace" name={obj.metadata.namespace} title={obj.metadata.namespace} />,
     },
     {
       className: classNames('pf-m-hidden', 'pf-m-visible-on-sm', 'co-break-word'),
